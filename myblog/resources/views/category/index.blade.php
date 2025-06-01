@@ -13,8 +13,7 @@
         <div>
             <h4>{{$unPost->id}} {{$unPost->title}}</h4>
             <div>
-                <img src="{{ asset('storage/' . $unPost->poster) }}" alt="Imagen de post">
-            </div>
+                <img src="{{ asset('storage/' . $unPost->poster) }}" alt="Imagen post" class="w-full max-w-[700px] aspect-[16/9] object-contain rounded-md ">            </div>
             <p>{{$unPost->content}}</p>
         </div>
     @endforeach

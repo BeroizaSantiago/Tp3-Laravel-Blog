@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -16,3 +17,5 @@ Route::get('category/edit/{id}', [CategoryController::class, 'getEdit']);
 
 Route::get('category/index', [CategoryController::class, 'getIndex'])->name('category.index');
 Route::put('edit/{id}', [CategoryController::class, "editData"])->name('category.update');
+
+Route::resource('posts', PostController::class);
