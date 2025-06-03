@@ -17,7 +17,6 @@
                 <h2 class="text-xl font-bold">
                     <a href="{{ route('posts.show', $post->id) }}" class="text-blue-600 hover:underline"> {{ $post->title }}</a>
                 </h2>
-                <p class="text-gray-700">{{ Str::limit($post->content, 100) }}</p>
             </div>
         @endforeach
     </div>
