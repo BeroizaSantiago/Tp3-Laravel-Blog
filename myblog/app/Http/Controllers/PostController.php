@@ -25,6 +25,7 @@ class PostController extends Controller
             'content' => 'required|string',
             'habilitated' => 'required|boolean',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required|integer',
         ]);
 
         $posterPath = $request->file('poster')->store('posters', 'public');
@@ -34,6 +35,7 @@ class PostController extends Controller
             'content' => $request->input('content'),
             'habilitated' => $request->input('habilitated'),
             'poster' => $posterPath,
+            'category' => $request->input('category'),
         ]);
 
         return redirect()->route('posts.index')->with('message', 'Post creado con éxito.');
@@ -60,6 +62,7 @@ class PostController extends Controller
             'content' => 'required|string',
             'habilitated' => 'required|boolean',
             'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'category' => 'required|integer', 
         ]);
 
         if ($request->hasFile('poster')) {
@@ -71,6 +74,7 @@ class PostController extends Controller
             'title' => $request->input('title'),
             'content' => $request->input('content'),
             'habilitated' => $request->input('habilitated'),
+            'category' => $request->input('category'),
         ]);
 
         $post->save();

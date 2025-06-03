@@ -35,6 +35,15 @@
         </div>
 
         <div class="mb-4">
+            <label for="category" class="block font-bold">Categoria:</label>
+            <select name="category" id="category" class="border w-full p-2" required>
+                <option value="1">Categoría 1</option>
+                <option value="2">Categoría 2</option>
+                <option value="3">Categoría 3</option>
+            </select>
+        </div>
+
+        <div class="mb-4">
             <label for="poster" class="block font-bold">Imagen del post:</label>
             <input type="file" name="poster" id="poster" class="border p-2" required>
         </div>

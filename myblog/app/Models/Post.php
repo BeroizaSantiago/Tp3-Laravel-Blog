@@ -14,5 +14,6 @@ class Post extends Model
         'content',
         'poster',
         'habilitated',
+        'category',
     ];
 }

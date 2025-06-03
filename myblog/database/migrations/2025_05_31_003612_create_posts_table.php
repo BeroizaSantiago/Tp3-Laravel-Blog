@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('poster');
             $table->boolean('habilitated')->default(false);
             $table->text('content');
+            $table->string('category'); 
             $table->timestamps();
         });
     }
