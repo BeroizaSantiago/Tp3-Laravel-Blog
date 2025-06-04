@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
@@ -29,13 +30,13 @@ class PostController extends Controller
         ]);
 
         $posterPath = $request->file('poster')->store('posters', 'public');
-
         Post::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
             'habilitated' => $request->input('habilitated'),
             'poster' => $posterPath,
             'category' => $request->input('category'),
+            'user_id' => auth()->id()
         ]);
 
         return redirect()->route('posts.index')->with('message', 'Post creado con éxito.');
@@ -79,7 +80,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('posts.index')->with('message', 'Post actualizado con éxito.');
+        return redirect()->route('category.index')->with('message', 'Post actualizado con éxito.');
     }
 
     public function destroy(string $id)
@@ -88,4 +89,28 @@ class PostController extends Controller
         $post->delete();
         return redirect()->route('posts.index')->with('message', 'Post eliminado.');
     }
+
+     /*public function editData(Request $request, $id) {
+        $post = Post::findOrFail($id);         //DB::table('posts')->where('id', $id)->first();
+        
+        $updatedData = collect($request->except('_token', '_method', 'confirm'))
+        ->reject(fn($formValue, $dbValue) => $post->$dbValue == $formValue)
+        ->toArray();
+
+        if(!empty($updatedData)) {
+            if(array_key_exists('poster', $updatedData)) {
+                $file = $request->file('poster');
+                $filePath = $file->store('posters', 'public');
+                Storage::disk('public')->delete($post->poster);
+                $updatedData['poster'] = $filePath;
+            }
+            $updatedData['updated_at'] = now();
+            $result = DB::table('posts')->where('id', $id)->update($updatedData);
+            $message = $result ? "El post se actualizó correctamente" : "Error al actualizar el post";
+        } else {
+            $message = "No se ingresaron cambios";
+        }
+
+        return redirect()->route('category.index')->with('message', $message);
+    }*/
 }

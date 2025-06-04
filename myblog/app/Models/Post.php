@@ -15,5 +15,6 @@ class Post extends Model
         'poster',
         'habilitated',
         'category',
+        'user_id'
     ];
 }
