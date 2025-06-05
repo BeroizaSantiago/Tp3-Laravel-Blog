@@ -8,11 +8,17 @@ use App\Models\User;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
-        return view('category.index', compact('posts'));
+
+        $category = $request->input('category');
+
+        $posts = $category ? Post::where('category', $category)->get() : Post::all();
+
+        return view('category.index', compact('posts', 'category'));
+
     }
+
 
     public function create()
     {
