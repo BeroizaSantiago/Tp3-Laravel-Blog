@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{route('category.edit', $post->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('category.edit', $post->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -33,8 +33,8 @@
         <div class="mb-4">
             <label for="habilitated" class="block font-bold">¿Habilitado?</label>
             <select name="habilitated" id="habilitated" class="border w-full p-2" required>
-                <option value="1" {{!$post->habilitated ? 'selected' : ''}}>Sí</option>
-                <option value="0" {{$post->habilitated ? 'selected' : ''}}>No</option>
+                <option value="1" {{ $post->habilitated ? 'selected' : '' }}>Sí</option>
+                <option value="0" {{ !$post->habilitated ? 'selected' : '' }}>No</option>
             </select>
         </div>
 
@@ -53,8 +53,8 @@
             <input type="file" name="poster" id="poster" class="border p-2">
         </div>
 
-        <input type="button" name="cancel" value="Cancelar" onclick="window.history.back()">
-        <input type="submit" name="confirm" value="Confirmar">    
+        <input type="button" value="Cancelar" onclick="window.history.back()">
+        <input type="submit" value="Confirmar">    
     </form>
     </div>
 

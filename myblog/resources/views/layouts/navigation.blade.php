@@ -12,11 +12,11 @@
                     <li>
                         @auth
                             <a href="{{ url('/category/create') }}" class="hover:underline">Crear</a>
+                            <li><a href="{{ url('/category/edit') }}" class="hover:underline">Mis posts</a></li>
                         @else
                             <a href="{{ route('login') }}" class="hover:underline">Crear</a>
                         @endauth
                     </li>
-                    <li><a href="{{ url('/category/edit') }}" class="hover:underline">Editar</a></li>
                     <li>
                         @guest 
                             <a href="{{ url('/register') }}" class="hover:underline">Registrarse</a>
