@@ -24,7 +24,7 @@ Route::get('/login', function () {
     return view('auth.login');
 });
 
-Route::get('/', [HomeController::class, 'getHome']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('category', [CategoryController::class, 'getIndex']); ///////
 Route::get('category/show/{id}', [CategoryController::class, 'getShow']);
