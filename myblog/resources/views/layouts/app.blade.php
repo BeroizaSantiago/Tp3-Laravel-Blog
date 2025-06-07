@@ -28,8 +28,8 @@
                 </header>
             @endisset            
         </div>
-
-        <main class="container mx-auto mt-8">
+        <!-- class="container mx-auto mt-8" -->
+        <main>
             @yield('content')
         </main>
     </body>

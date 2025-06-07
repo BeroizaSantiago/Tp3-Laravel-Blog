@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -79,6 +80,7 @@ class PostController extends Controller
 
             if ($request->hasFile('poster')) {
                 $posterPath = $request->file('poster')->store('posters', 'public');
+                Storage::disk('public')->delete($post->poster);
                 $post->poster = $posterPath;
             }
 
