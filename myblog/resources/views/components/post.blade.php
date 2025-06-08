@@ -8,14 +8,14 @@
     @else
         @foreach($posts as $post)
             <div class="border p-6 rounded shadow-lg bg-white relative"> 
-                <a href="{{ route('category.index') }}">
+                <a href="{{ route('category.show', $post->id) }}">
                     <img src="{{ asset('storage/' . $post->poster) }}" alt="Imagen del post" class="w-full h-64 object-cover rounded mb-4">
                 </a>    
 
                 <p class="text-md font-semibold text-gray-600 uppercase tracking-wide mb-2">{{ $post->category }}</p>
 
                 <h2 class="text-3xl font-extrabold text-blue-500 hover:text-orange-500 transition duration-300">
-                    <a href="{{ route('category.index') }}">{{ $post->title }}</a>
+                    <a href="{{ route('category.show', $post->id) }}">{{ $post->title }}</a>
                 </h2>
 
                 <p class="text-gray-700 text-lg flex-grow font-serif">

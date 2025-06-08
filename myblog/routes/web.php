@@ -26,10 +26,9 @@ Route::get('/login', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('category', [CategoryController::class, 'getIndex']); ///////
-Route::get('category/show/{id}', [CategoryController::class, 'getShow']);
+Route::get('category', [CategoryController::class, 'getIndex']);
+Route::get('category/show/{id}', [CategoryController::class, 'getShow'])->name('category.show');;
 Route::get('category/create', [CategoryController::class, 'getCreate']);
-Route::get('category/index', [CategoryController::class, 'getIndex'])->name('category.index');
 Route::get('category/delete/{id}', [PostController::class, 'destroy'])->name('category.delete');
 Route::get('category/edit/{id}', [PostController::class, 'edit'])->name('category.edit');
 Route::put('category/edit/{id}', [PostController::class, 'update'])->name('category.update');
