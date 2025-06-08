@@ -1,5 +1,3 @@
-<h1 class="text-3xl font-bold text-center text-gray-800 mb-8 pt-12">Categorías</h1>
-
 <div class="w-full max-w-3xl mx-auto px-4 py-10 flex flex-col items-center">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         @foreach($categories as $cat)

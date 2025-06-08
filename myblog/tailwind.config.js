@@ -8,12 +8,20 @@ export default {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
     ],
-
     theme: {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                fadeOut: "fadeOut 3s ease-in-out forwards"
+            },
+            keyframes: {
+                fadeOut: {
+                    "0%": { opacity: "1" },
+                    "100%": { opacity: "0" },
+                }
+            }
         },
     },
 
