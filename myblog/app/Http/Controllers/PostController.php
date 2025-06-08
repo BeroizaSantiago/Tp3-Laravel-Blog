@@ -20,7 +20,6 @@ class PostController extends Controller
 
     }
 
-
     public function create()
     {
         return view('category.create');
@@ -31,7 +30,6 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'habilitated' => 'required|boolean',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'category' => 'required|string|in:Cuerda,Electrónico,Percusión,Viento',
         ]);
@@ -40,7 +38,6 @@ class PostController extends Controller
         Post::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
-            'habilitated' => $request->input('habilitated'),
             'poster' => $posterPath,
             'category' => $request->input('category'),
             'user_id' => auth()->id()
@@ -73,9 +70,9 @@ class PostController extends Controller
                 $request->validate([
                 'title' => 'required|string|max:255',
                 'content' => 'required|string',
-                'habilitated' => 'required|boolean',
                 'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'category' => 'required|integer', 
+                'category' => 'required|string|in:Cuerda,Electrónico,Percusión,Viento',
+
             ]);
 
             if ($request->hasFile('poster')) {
@@ -87,7 +84,6 @@ class PostController extends Controller
             $post->update([
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
-                'habilitated' => $request->input('habilitated'),
                 'category' => $request->input('category'),
             ]);
 
@@ -98,7 +94,7 @@ class PostController extends Controller
             $message = "No se ingresaron cambios.";
         }
 
-        return redirect()->route('category.index')->with('message', $message);
+        return redirect()->route('posts.index')->with('message', $message);
     }
 
     public function destroy(string $id)
