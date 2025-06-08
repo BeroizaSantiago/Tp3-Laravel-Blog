@@ -95,7 +95,7 @@
                 @if(Auth::check())
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit">Log Out</button>
+                        <a href="{{ route('home') }}"><button type="submit">Log Out</button></a>
                     </form>
                 @else
                     <a href="{{ route('login') }}">Login</a>
