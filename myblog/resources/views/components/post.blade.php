@@ -3,7 +3,7 @@
 <div class=" {{ $posts->isNotEmpty() ? 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6' : 'min-h-[800px]' }}">
     @if($posts->isEmpty())
         <div class="w-full flex justify-center text-xl">
-            <p class="p-3">¡Todavía no hay posts!</p>
+            <p class="p-3 font-bold">¡Todavía no hay posts!</p>
         </div>
         <div class="flex justify-center">
             <a href="{{ url('/category/create') }}"><x-button type="button" class="bg-blue-600 hover:bg-blue-700 hover:cursor-pointer text-white m-2 mr-0 px-4 py-2 rounded-full w-24" text="Crear"></x-button></a>

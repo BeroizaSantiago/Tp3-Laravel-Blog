@@ -29,8 +29,8 @@
                     </header>
                 @endisset            
             </div>
-            <!-- class="" -->
-            <main class="{{ request()->routeIs('category.edit') || request()->routeIs('category.create') || request()->routeIs('home')  ? 'w-full' : 'container mx-auto md:mt-8 md:mb-12' }} pt-[60px]">
+
+            <main class="{{ request()->routeIs('category.edit') || request()->routeIs('category.create') ? '' : 'w-full' }} pt-[60px]">
                 @yield('content')
             </main>
 

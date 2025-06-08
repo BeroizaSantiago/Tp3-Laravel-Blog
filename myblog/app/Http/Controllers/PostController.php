@@ -31,16 +31,15 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'habilitated' => 'required|boolean',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category' => 'required|integer',
+            'category' => 'required|string|in:Cuerda,Electrónico,Percusión,Viento',
         ]);
 
         $posterPath = $request->file('poster')->store('posters', 'public');
         Post::create([
             'title' => $request->input('title'),
             'content' => $request->input('content'),
-            'habilitated' => $request->input('habilitated'),
+            'habilitated' => 1,
             'poster' => $posterPath,
             'category' => $request->input('category'),
             'user_id' => auth()->id()
@@ -73,9 +72,8 @@ class PostController extends Controller
                 $request->validate([
                 'title' => 'required|string|max:255',
                 'content' => 'required|string',
-                'habilitated' => 'required|boolean',
                 'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'category' => 'required|integer', 
+                'category' => 'required|string', 
             ]);
 
             if ($request->hasFile('poster')) {
@@ -87,15 +85,15 @@ class PostController extends Controller
             $post->update([
                 'title' => $request->input('title'),
                 'content' => $request->input('content'),
-                'habilitated' => $request->input('habilitated'),
+                'habilitated' => 1,
                 'category' => $request->input('category'),
             ]);
 
             $result = $post->save();
-            $message = $result ? "Post actualizado con éxito." : "Error al actualizar el post.";
+            $message = $result ? "Post actualizado con éxito" : "Error al actualizar el post";
             
         } else {
-            $message = "No se ingresaron cambios.";
+            $message = "No se ingresaron cambios";
         }
 
         return redirect()->route('category.index')->with('message', $message);
@@ -105,6 +103,6 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->delete();
-        return redirect()->route('posts.index')->with('message', 'Post eliminado.');
+        return redirect()->route('posts.index')->with('message', 'Post eliminado');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="max-w-6xl mx-auto grid grid-cols-12 gap-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-12 gap-6 m-6">
         <div class="col-span-8 bg-white p-8 shadow-lg rounded-lg">
             <h1 class="text-5xl font-extrabold mb-6 text-gray-800">{{ $post->title }}</h1>
             <img src="{{ asset('storage/' . $post->poster) }}" alt="Imagen del post" class="mb-6 w-full h-auto rounded-lg shadow-md">
