@@ -33,7 +33,7 @@ class PostController extends Controller
             'content' => 'required|string',
             'habilitated' => 'required|boolean',
             'poster' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'category' => 'required|integer',
+            'category' => 'required|string|in:Cuerda,Electrónico,Percusión,Viento',
         ]);
 
         $posterPath = $request->file('poster')->store('posters', 'public');

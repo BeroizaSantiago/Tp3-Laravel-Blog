@@ -13,11 +13,12 @@
                         </ul>
                     </div>
                 @endif
-                <form action="{{ route($post ? 'category.edit' : 'posts.store', $post?->id) }}" method="POST" enctype="multipart/form-data" class="w-full p-2" name="upload-form">
+                <form action="{{ $post ? route('category.update', $post->id) : route('category.create') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if($post)
+                    @if
                         @method('PUT')
                     @endif
+
                     @if(!$post)
                         <h1 class="text-2xl font-bold mb-4">Crear nuevo post</h1>
                     @endif
@@ -33,21 +34,13 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="habilitated" class="block font-bold">¿Habilitado?</label>
-                        <select name="habilitated" id="habilitated" class="border w-full p-2 rounded-md" required>
-                            <option disabled {{ !$post ? 'selected' : '' }}>Seleccionar una opción</option>
-                            <option value="1" {{ $post && $post->habilitated === 1 ? 'selected' : '' }}>Sí</option>
-                            <option value="0" {{ $post && $post->habilitated === 0 ? 'selected' : '' }}>No</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-4">
                         <label for="category" class="block font-bold">Categoría</label>
                         <select name="category" id="category" class="border w-full p-2 rounded-md" required>
                             <option disabled {{ !$post ? 'selected' : ''}}>Seleccionar una opción</option>
-                            <option value="1" {{ $post && $post->category === '1' ? 'selected' : ''}}>Categoría 1</option>
-                            <option value="2" {{ $post && $post->category === '2' ? 'selected' : ''}}>Categoría 2</option>
-                            <option value="3" {{ $post && $post->category === '3' ? 'selected' : ''}}>Categoría 3</option>
+                            <option value="Cuerda" {{ $post && $post->category === 'Cuerda' ? 'selected' : ''}}>Cuerda</option>
+                            <option value="Electrónico" {{ $post && $post->category === 'Electrónico' ? 'selected' : ''}}>Electrónicos</option>
+                            <option value="Percusión" {{ $post && $post->category === 'Percusión' ? 'selected' : ''}}>Percusión</option>
+                            <option value="Viento" {{ $post && $post->category === 'Viento' ? 'selected' : ''}}>Viento</option>
                         </select>
                     </div>
 
