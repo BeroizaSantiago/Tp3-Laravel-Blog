@@ -14,7 +14,7 @@ class PostController extends Controller
 
         $category = $request->input('category');
 
-        $posts = $category ? Post::where('category', $category)->get() : Post::all();
+        $posts = $category ? Post::where('category', $category)->where('habilitated', 1)->get() : Post::where('habilitated', 1)->get();
 
         return view('category.index', compact('posts', 'category'));
 

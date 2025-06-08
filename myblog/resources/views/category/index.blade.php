@@ -58,7 +58,9 @@
         </div>
     </div>
     @else
-        <h2 class="text-2xl font-bold mt-6 mb-4">Posts en la categoría: {{ $category }}</h2>
+        <div class="bg-gray-200 rounded-full min-w-28 w-fit mt-5 ml-1 mb-5 md:mt-0 md:ml-0 flex justify-center">
+            <p class="p-1 text-gray-600 mr-0"> {{ $category }} ({{ count($posts) }})</p>
+        </div>
 
         <div>
             <x-post :posts="$posts"></x-post>

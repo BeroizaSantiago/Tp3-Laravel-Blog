@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-gray-800 text-white">
+<nav x-data="{ open: false }" class="bg-gray-800 text-white fixed top-0 z-50 w-full">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -8,11 +8,10 @@
 
                 <ul class="flex space-x-4">
                     <li><a href="{{ url('/') }}" class="hover:underline">Home</a></li>
-                    <li><a href="{{ url('/category') }}" class="hover:underline">Categorías</a></li>
+                    <li><a href="{{ url('/category/index') }}" class="hover:underline">Categorías</a></li>
                     <li>
                         @auth
                             <a href="{{ url('/category/create') }}" class="hover:underline">Crear</a>
-                            <li><a href="{{ url('/category/edit') }}" class="hover:underline">Mis posts</a></li>
                         @else
                             <a href="{{ route('login') }}" class="hover:underline">Crear</a>
                         @endauth
