@@ -1,9 +1,11 @@
+<h1 class="text-4xl font-black text-center text-white mt-6 mb-4 rounded-full" style="-webkit-text-stroke: 1px black; text-shadow: 10px 10px 20px black; font-family: Arial, sans-serif;">
+    Categorías
+</h1>
 <div class="w-full max-w-3xl mx-auto px-4 py-10 flex flex-col items-center">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         @foreach($categories as $cat)
             <div class="border p-4 rounded-xl shadow-lg bg-white flex flex-col items-center gap-4 max-w-sm w-full h-full transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-                
-
+            
                 <img src="{{ $cat['imagen'] }}" alt="{{ $cat['nombre'] }}" class="w-full h-48 object-cover rounded-t-lg shadow-md">
 
                 <div class="flex flex-col justify-between items-center text-center h-full w-full gap-3">
