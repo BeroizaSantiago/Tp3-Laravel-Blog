@@ -20,7 +20,6 @@ class PostController extends Controller
 
     }
 
-
     public function create()
     {
         return view('category.create');
@@ -73,7 +72,8 @@ class PostController extends Controller
                 'title' => 'required|string|max:255',
                 'content' => 'required|string',
                 'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-                'category' => 'required|string', 
+                'category' => 'required|string|in:Cuerda,Electrónico,Percusión,Viento',
+
             ]);
 
             if ($request->hasFile('poster')) {
@@ -96,7 +96,7 @@ class PostController extends Controller
             $message = "No se ingresaron cambios";
         }
 
-        return redirect()->route('category.index')->with('message', $message);
+        return redirect()->route('posts.index')->with('message', $message);
     }
 
     public function destroy(string $id)

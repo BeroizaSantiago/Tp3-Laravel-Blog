@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
     <div style="background-image: url('{{ asset('images/fondoCategoria.jpg') }}'); background-size: cover; background-position: center;" class="min-h-screen">            <div class="container mx-auto max-w-5xl px-6 py-12">
 
         @if(session('message'))
-            <div class="bg-white rounded full w-fit p-5 text-gray-600 animate-fadeOut fixed bottom-7 right-3 border">
-                <p>{{session('message')}}</p>
+            <div class="bg-white rounded-lg w-fit p-5 text-gray-600 animate-fadeOut fixed bottom-7 right-3 border">
+                <p>{{ session('message') }}</p>
             </div>
             @php
                 header("Cache-Control: no-cache, no-store, must-revalidate");
@@ -24,6 +25,10 @@
 
             <x-category :categories="$categories"/>
         @else
+                    <h2 class="text-3xl font-bold text-center text-gray-800 mt-8 mb-6">
+                        Posts en la categoría: {{ $category }}
+                    </h2>
+                    
                     <div class="bg-gray-300 rounded-full w-fit px-6 py-1 mb-6 flex justify-center shadow-md text-xs">
                         <p class="text-lg text-gray-700 font-semibold"> {{ $category }} ({{ count($posts) }})</p>
                     </div>

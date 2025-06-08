@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('poster');
             $table->string('category');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->boolean('habilitated')->default(false);
             $table->text('content');
             $table->timestamps();
         });
