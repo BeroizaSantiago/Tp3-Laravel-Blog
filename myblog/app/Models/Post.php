@@ -13,6 +13,7 @@ class Post extends Model
         'title',
         'content',
         'poster',
+        //'habilitated',
         'category',
         'user_id'
     ];
