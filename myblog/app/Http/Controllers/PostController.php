@@ -93,14 +93,14 @@ class PostController extends Controller
             
             if ($result) {
                 $message = "Post actualizado con éxito";
-                $messageColor = "bg-green-100 border-green-400 text-green-800";
+                $messageColor = "green";
             } else {
                 $message = "Error al actualizar el post";
-                $messageColor = "bg-red-100 border-red-400 text-red-800";
+                $messageColor = "red";
             }            
         } else {
             $message = "No se ingresaron cambios";
-            $messageColor = "bg-yellow-100 border-yellow-400 text-yellow-800";
+            $messageColor = "yellow";
         }
 
         return redirect()->route('posts.index')->with(['message' => $message, 'messageColor' => $messageColor]);

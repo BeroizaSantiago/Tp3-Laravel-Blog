@@ -14,7 +14,15 @@
         @endphp
 
         @if(session('message'))
-            <div class="{{ session('messageColor') }} p-4 mb-4 rounded-lg animate-fadeOut w-fit fixed top-10 left-">
+            <div class="hidden">
+                bg-green-100 border-green-400 text-green-800
+                bg-red-100 border-red-400 text-red-800
+                bg-yellow-100 border-yellow-400 text-yellow-800
+            </div>  
+            @php
+                $color = session('messageColor') ?? 'gray';
+            @endphp
+            <div class="bg-{{ $color }}-100 border-{{ $color }}-400 text-{{ $color }}-800 p-4 mb-4 rounded-lg animate-fadeOut w-fit fixed top-10 left-4">
                 <p>{{ session('message') }}</p>
             </div>
             @php 
