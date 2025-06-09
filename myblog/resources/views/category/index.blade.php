@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="min-h-screen bg-cover bg-center backdrop-blur-md" style="background-image: url('{{ asset('images/fondoCategoria.webp') }}');">
-    <div class="container mx-auto max-w-full px-6 py-12">
+    <div class="container mx-auto max-w-full px-6 py-12 relative">
 
         @php
             $categories = [
@@ -14,10 +14,12 @@
         @endphp
 
         @if(session('message'))
-            <div class="p-4 mb-4 bg-green-100 border border-green-400 text-green-800 rounded">
+            <div class="{{ session('messageColor') }} p-4 mb-4 rounded-lg animate-fadeOut w-fit fixed top-10 left-">
                 <p>{{ session('message') }}</p>
             </div>
-            @php header("Cache-Control: no-cache, no-store, must-revalidate"); @endphp
+            @php 
+                header("Cache-Control: no-cache, no-store, must-revalidate"); 
+            @endphp
         @endif
 
         @if(!isset($category))

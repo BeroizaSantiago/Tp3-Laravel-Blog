@@ -44,7 +44,7 @@ class PostController extends Controller
             'user_id' => auth()->id()
         ]);
 
-        return redirect()->route('posts.index')->with('message', 'Post creado con éxito.');
+        return redirect()->route('posts.index')->with(['message' => 'Post creado con éxito', 'messageColor' => 'bg-green-100 border-green-400 text-green-800']);
     }
 
     public function show(string $id)
@@ -90,13 +90,20 @@ class PostController extends Controller
             ]);
 
             $result = $post->save();
-            $message = $result ? "Post actualizado con éxito" : "Error al actualizar el post";
             
+            if ($result) {
+                $message = "Post actualizado con éxito";
+                $messageColor = "bg-green-100 border-green-400 text-green-800";
+            } else {
+                $message = "Error al actualizar el post";
+                $messageColor = "bg-red-100 border-red-400 text-red-800";
+            }            
         } else {
             $message = "No se ingresaron cambios";
+            $messageColor = "bg-yellow-100 border-yellow-400 text-yellow-800";
         }
 
-        return redirect()->route('posts.index')->with('message', $message);
+        return redirect()->route('posts.index')->with(['message' => $message, 'messageColor' => $messageColor]);
     }
 
     public function destroy(string $id)

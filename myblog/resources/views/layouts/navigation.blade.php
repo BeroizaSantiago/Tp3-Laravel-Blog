@@ -41,18 +41,16 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <!-- <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
-                            </x-dropdown-link>
+                            </x-dropdown-link> -->
 
                             <!-- Authentication -->
                             @if(Auth::check())
                                 <form method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="submit">Log Out</button>
+                                    <button type="submit" class="text-gray-800 p-2">Cerrar Sesión</button>
                                 </form>
-                            @else
-                                <a href="{{ route('login') }}">Login</a>
                             @endif
                         </x-slot>
                     </x-dropdown>
