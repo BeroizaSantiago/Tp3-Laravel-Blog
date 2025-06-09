@@ -13,7 +13,7 @@
                         @auth
                             <a href="{{ url('/category/create') }}" class="hover:underline">Crear</a>
                         @else
-                            <a href="{{ route('login') }}" class="hover:underline">Crear</a>
+                            <a href="{{ url('/register') }}" class="hover:underline">Crear</a>
                         @endauth
                     </li>
                     <li>
